@@ -1,0 +1,64 @@
+{
+  "assets": [
+    {
+      "path": "processed/beauty/assets.npz",
+      "bytes": 122187460,
+      "sha256": "10378b0640771d59cdac9a9afb9bb78fe9f42e62e48e017e1f6e365c0b4a1989"
+    },
+    {
+      "path": "processed/cellphones/assets.npz",
+      "bytes": 30624805,
+      "sha256": "efd1bcaeac0342868eba17f2639d051e18e85fc477f5b12e1f9c5813ce099d22"
+    },
+    {
+      "path": "processed/cellphones/bge_u16.npz",
+      "bytes": 29790487,
+      "sha256": "34c2636a520c74411dfbf72fd1fe565c8c6c01b95c70945631261a79ca7a4d1d"
+    },
+    {
+      "path": "processed/cellphones/tail50.npz",
+      "bytes": 536487,
+      "sha256": "36496fa9435e274aced597dd054cbc870f2c00e0f3d38258c1efbacb9f5b9016"
+    },
+    {
+      "path": "processed/ml1m/assets.npz",
+      "bytes": 31368000,
+      "sha256": "909077f525af78db1181d16bfe498dc45b0782f06592bd7974ebde7aeb11c6e3"
+    },
+    {
+      "path": "processed/ml1m/reference_val.json",
+      "bytes": 3194,
+      "sha256": "60a9b1a00ece93cca41d4ce0543d9c22e58185c7528d23d04f7b12f2be3abe31"
+    },
+    {
+      "path": "processed/ml1m/t5_u16.npz",
+      "bytes": 10612278,
+      "sha256": "a3a5a54ba4be3e49053760befb43bad039d0a70d3cb15859ab0fc8c5244aaf7b"
+    },
+    {
+      "path": "processed/ml1m/tail50.npz",
+      "bytes": 10829259,
+      "sha256": "b8073a3f5eae9c4479d1162d9ab79cbbf6ec4f2cff82f709f5488176a0aa8751"
+    },
+    {
+      "path": "processed/lastfm/assets.npz",
+      "bytes": 18174415,
+      "sha256": "b9c79b938986fbfb5ca8e81664decab02c151debc8a405daf3291e8d5aa66e0f"
+    },
+    {
+      "path": "processed/lastfm/reference_val.json",
+      "bytes": 3181,
+      "sha256": "2d4e1708cfc929e2f4df3400f56c23b15f733165d402155f60ae155092f2fd69"
+    },
+    {
+      "path": "processed/lastfm/t5_text_bge_code.npz",
+      "bytes": 2826449,
+      "sha256": "14c5e93b56b87a9848771356cf21ff5385f734d9db0ec96abab70b8b7f2c5a0c"
+    },
+    {
+      "path": "processed/lastfm/tail50.npz",
+      "bytes": 8617938,
+      "sha256": "584308f74c3b1331209573d54c26593b196ac4b6e845a53e1b33e17db45649e4"
+    }
+  ]
+}

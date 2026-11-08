@@ -1,0 +1,23 @@
+{
+  "dataset": "cellphones",
+  "K": 3,
+  "name": "combined_no_extra_users_tails",
+  "asset": "bge_u16",
+  "layers": 1,
+  "history": 50,
+  "dense_drop": 0.5,
+  "joint_drop": 0.3,
+  "feedback_drop": 0.5,
+  "token_scale": 1.0,
+  "item_scale": 2.0,
+  "tails": true,
+  "extra_dense": false,
+  "repeat_dense": false,
+  "text_input": true,
+  "alignment": 0.0,
+  "seed": 2024,
+  "dense_batch": 256,
+  "joint_batch": 256,
+  "eval_batch": 128,
+  "ce_chunk": 4096
+}
