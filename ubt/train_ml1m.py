@@ -40,7 +40,7 @@ def seed():
 def evaluate():
     cfg = json.loads((ROOT / 'configs/ml1m.json').read_text())['full']
     data = load_data(cfg)
-    checkpoint = OUT / 'full/t5_lastfm/selected.pt'
+    checkpoint = OUT / 'full/sentence_t5/selected.pt'
     state = torch.load(checkpoint, map_location='cuda', weights_only=False)
     actor = core.make_actor(cfg, data, state)
     metrics = core.evaluate(actor, data, 'test', 5, bs=128,
@@ -65,7 +65,7 @@ def main():
         core.warmup(config['warmup'])
     elif args.mode == 'full':
         cfg = dict(config['full'])
-        cfg['reuse_dense'] = str(OUT / 'warmup/t5_lastfm/dense.pt')
+        cfg['reuse_dense'] = str(OUT / 'warmup/sentence_t5/dense.pt')
         core.train(cfg, 'full')
     else:
         print(json.dumps(evaluate(), indent=2))

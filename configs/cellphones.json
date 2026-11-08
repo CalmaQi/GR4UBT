@@ -1,8 +1,8 @@
 {
   "dataset": "cellphones",
   "K": 3,
-  "name": "combined_no_extra_users_tails",
-  "asset": "bge_u16",
+  "name": "t5_combined_tails",
+  "asset": "sentence_t5_u16",
   "layers": 1,
   "history": 50,
   "dense_drop": 0.5,
@@ -19,5 +19,22 @@
   "dense_batch": 256,
   "joint_batch": 256,
   "eval_batch": 128,
-  "ce_chunk": 4096
+  "ce_chunk": 4096,
+  "stage2": {
+    "implementation": "relation-aware",
+    "seed": 2024,
+    "epochs": 3,
+    "batch_size": 32,
+    "updates_per_batch": 2,
+    "rollout_group": 8,
+    "policy_learning_rate": 1e-06,
+    "transition_learning_rate": 1e-05,
+    "run_factorial_arms": true,
+    "arms": [
+      "target_only_no_continuation",
+      "target_only_with_continuation",
+      "transition_no_continuation",
+      "transition_with_continuation"
+    ]
+  }
 }

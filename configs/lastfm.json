@@ -1,8 +1,8 @@
 {
   "dataset": "lastfm",
   "K": 5,
-  "name": "bge_tails_direct_lr001",
-  "asset": "t5_text_bge_code",
+  "name": "sentence_t5_direct_tails",
+  "asset": "sentence_t5_bge_sid",
   "layers": 2,
   "history": 50,
   "dense_drop": 0.5,
@@ -49,5 +49,22 @@
   "joint_epochs_override": 12,
   "joint_patience_override": 16,
   "joint_lr_schedule": "warmup_cosine",
-  "joint_lr_warmup_steps": 256
+  "joint_lr_warmup_steps": 256,
+  "stage2": {
+    "implementation": "relation-aware",
+    "seed": 2024,
+    "epochs": 3,
+    "batch_size": 32,
+    "updates_per_batch": 2,
+    "rollout_group": 8,
+    "policy_learning_rate": 1e-06,
+    "transition_learning_rate": 1e-05,
+    "run_factorial_arms": true,
+    "arms": [
+      "target_only_no_continuation",
+      "target_only_with_continuation",
+      "transition_no_continuation",
+      "transition_with_continuation"
+    ]
+  }
 }

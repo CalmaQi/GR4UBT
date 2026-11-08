@@ -1,64 +1,72 @@
 {
-  "assets": [
-    {
-      "path": "processed/beauty/assets.npz",
-      "bytes": 122187460,
-      "sha256": "10378b0640771d59cdac9a9afb9bb78fe9f42e62e48e017e1f6e365c0b4a1989"
+  "format_version": 2,
+  "text_embedding": "Sentence-T5 base, 768 dimensions, row aligned to the packaged item IDs",
+  "sid_codes": {
+    "beauty": "Sentence-T5-derived static OPQ16 codes",
+    "cellphones": "Sentence-T5 u16 codes",
+    "ml1m": "Sentence-T5 u16 codes",
+    "lastfm": "Existing BGE-derived SID codes; no BGE text vectors are included"
+  },
+  "datasets": {
+    "beauty": {
+      "assets.npz": {
+        "size_bytes": 1810618,
+        "sha256": "3bb93807257644e3aabbac3893ae3cb05930234b075725ebac4cd2b211ebaaa1"
+      },
+      "sentence_t5_u16.npz": {
+        "size_bytes": 21953962,
+        "sha256": "8b92bbc99aca2d463323216075b3ceb03891819c2bfa67e496c3ed0573455fc2"
+      }
     },
-    {
-      "path": "processed/cellphones/assets.npz",
-      "bytes": 30624805,
-      "sha256": "efd1bcaeac0342868eba17f2639d051e18e85fc477f5b12e1f9c5813ce099d22"
+    "cellphones": {
+      "assets.npz": {
+        "size_bytes": 865964,
+        "sha256": "70d16d418d733ca92411cc331c3fb449ca53b70f3eccf7eff270690bbd54d128"
+      },
+      "sentence_t5_u16.npz": {
+        "size_bytes": 29759281,
+        "sha256": "5bc47a1581817d5548411e7c5c50fc895b5167a19068ce19000fae74654e266d"
+      },
+      "tail50.npz": {
+        "size_bytes": 536487,
+        "sha256": "36496fa9435e274aced597dd054cbc870f2c00e0f3d38258c1efbacb9f5b9016"
+      }
     },
-    {
-      "path": "processed/cellphones/bge_u16.npz",
-      "bytes": 29790487,
-      "sha256": "34c2636a520c74411dfbf72fd1fe565c8c6c01b95c70945631261a79ca7a4d1d"
+    "ml1m": {
+      "assets.npz": {
+        "size_bytes": 20755744,
+        "sha256": "add9a4ce25cd381da6a59c9b1522c53d2a16b437bc4a4286d7466900c23672a0"
+      },
+      "sentence_t5_u16.npz": {
+        "size_bytes": 10612278,
+        "sha256": "a3a5a54ba4be3e49053760befb43bad039d0a70d3cb15859ab0fc8c5244aaf7b"
+      },
+      "tail50.npz": {
+        "size_bytes": 10829259,
+        "sha256": "b8073a3f5eae9c4479d1162d9ab79cbbf6ec4f2cff82f709f5488176a0aa8751"
+      },
+      "reference_val.json": {
+        "size_bytes": 3194,
+        "sha256": "60a9b1a00ece93cca41d4ce0543d9c22e58185c7528d23d04f7b12f2be3abe31"
+      }
     },
-    {
-      "path": "processed/cellphones/tail50.npz",
-      "bytes": 536487,
-      "sha256": "36496fa9435e274aced597dd054cbc870f2c00e0f3d38258c1efbacb9f5b9016"
-    },
-    {
-      "path": "processed/ml1m/assets.npz",
-      "bytes": 31368000,
-      "sha256": "909077f525af78db1181d16bfe498dc45b0782f06592bd7974ebde7aeb11c6e3"
-    },
-    {
-      "path": "processed/ml1m/reference_val.json",
-      "bytes": 3194,
-      "sha256": "60a9b1a00ece93cca41d4ce0543d9c22e58185c7528d23d04f7b12f2be3abe31"
-    },
-    {
-      "path": "processed/ml1m/t5_u16.npz",
-      "bytes": 10612278,
-      "sha256": "a3a5a54ba4be3e49053760befb43bad039d0a70d3cb15859ab0fc8c5244aaf7b"
-    },
-    {
-      "path": "processed/ml1m/tail50.npz",
-      "bytes": 10829259,
-      "sha256": "b8073a3f5eae9c4479d1162d9ab79cbbf6ec4f2cff82f709f5488176a0aa8751"
-    },
-    {
-      "path": "processed/lastfm/assets.npz",
-      "bytes": 18174415,
-      "sha256": "b9c79b938986fbfb5ca8e81664decab02c151debc8a405daf3291e8d5aa66e0f"
-    },
-    {
-      "path": "processed/lastfm/reference_val.json",
-      "bytes": 3181,
-      "sha256": "2d4e1708cfc929e2f4df3400f56c23b15f733165d402155f60ae155092f2fd69"
-    },
-    {
-      "path": "processed/lastfm/t5_text_bge_code.npz",
-      "bytes": 2826449,
-      "sha256": "14c5e93b56b87a9848771356cf21ff5385f734d9db0ec96abab70b8b7f2c5a0c"
-    },
-    {
-      "path": "processed/lastfm/tail50.npz",
-      "bytes": 8617938,
-      "sha256": "584308f74c3b1331209573d54c26593b196ac4b6e845a53e1b33e17db45649e4"
+    "lastfm": {
+      "assets.npz": {
+        "size_bytes": 15348479,
+        "sha256": "5b61829e94b20fbd08929024361516ce650b35e331e5d78ab4c55266c4820242"
+      },
+      "sentence_t5_bge_sid.npz": {
+        "size_bytes": 2826449,
+        "sha256": "14c5e93b56b87a9848771356cf21ff5385f734d9db0ec96abab70b8b7f2c5a0c"
+      },
+      "tail50.npz": {
+        "size_bytes": 8617938,
+        "sha256": "584308f74c3b1331209573d54c26593b196ac4b6e845a53e1b33e17db45649e4"
+      },
+      "reference_val.json": {
+        "size_bytes": 3181,
+        "sha256": "2d4e1708cfc929e2f4df3400f56c23b15f733165d402155f60ae155092f2fd69"
+      }
     }
-  ]
+  }
 }

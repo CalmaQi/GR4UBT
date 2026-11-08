@@ -1,10 +1,11 @@
 """Paths shared by the portable reproduction package."""
 import json
+import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'data/processed'
-RUNS = ROOT / 'runs'
+RUNS = Path(os.environ.get('UBT_RUNS', ROOT / 'runs' / 'reproduction'))
 
 
 def save(path, value):

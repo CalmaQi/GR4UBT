@@ -2,8 +2,8 @@
   "warmup": {
     "dataset": "ml1m",
     "K": 5,
-    "name": "t5_lastfm",
-    "asset": "t5_u16",
+    "name": "sentence_t5",
+    "asset": "sentence_t5_u16",
     "layers": 2,
     "history": 50,
     "dense_drop": 0.5,
@@ -53,8 +53,8 @@
   "full": {
     "dataset": "ml1m",
     "K": 5,
-    "name": "t5_lastfm",
-    "asset": "t5_u16",
+    "name": "sentence_t5",
+    "asset": "sentence_t5_u16",
     "layers": 2,
     "history": 50,
     "dense_drop": 0.5,
@@ -100,5 +100,22 @@
     "joint_epochs_override": 6,
     "joint_patience_override": 10,
     "reuse_dense": null
+  },
+  "stage2": {
+    "implementation": "relation-aware",
+    "seed": 2024,
+    "epochs": 3,
+    "batch_size": 32,
+    "updates_per_batch": 2,
+    "rollout_group": 8,
+    "policy_learning_rate": 1e-06,
+    "transition_learning_rate": 1e-05,
+    "run_factorial_arms": true,
+    "arms": [
+      "target_only_no_continuation",
+      "target_only_with_continuation",
+      "transition_no_continuation",
+      "transition_with_continuation"
+    ]
   }
 }

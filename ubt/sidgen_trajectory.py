@@ -4,7 +4,7 @@ Item IDs are zero based in rollout APIs (``actions0``/``prefix0``) and one
 based in dataset targets. ``logits`` always means logits of the *actual*
 sampling law, including its single temperature and optional no-repeat mask.
 No independent item classifier, candidate reranking, or future labels enter
-generation. A frozen random projection of the supplied OpenAI text asset
+generation. A frozen random projection of the supplied Sentence-T5 text asset
 defines local semantic neighbourhoods; trainable SID means provide feedback.
 """
 from contextlib import contextmanager
@@ -49,7 +49,7 @@ class SIDUBTTrajectory(SIDMuJoint):
         self.ubt_semantic_seed = int(ubt_semantic_seed)
         self._tie_readout()
         if not self.use_text:
-            raise ValueError("UBT needs the complete frozen OpenAI item text asset")
+            raise ValueError("UBT needs the complete frozen Sentence-T5 item text asset")
         if self.text_embs.shape[0] != self.n_items + 1:
             raise ValueError("text asset must contain PAD plus every catalogue item")
         # Construct N x d once, without N x N or N x L x D allocations.

@@ -213,6 +213,8 @@ def main():
     torch.set_num_threads(4);torch.manual_seed(2024);np.random.seed(2024);torch.backends.cuda.matmul.allow_tf32=True;torch.backends.cudnn.allow_tf32=True
     from paths import DATA
     folder=OUT/a.dataset;folder.mkdir(parents=True,exist_ok=True);data=dict(np.load(DATA/a.dataset/'assets.npz',allow_pickle=False))
+    feature_name='sentence_t5_bge_sid.npz' if a.dataset=='lastfm' else 'sentence_t5_u16.npz'
+    with np.load(DATA/a.dataset/feature_name,allow_pickle=False) as feature:data.update(text=feature['text'],codes=feature['codes'])
     assert a.k in (3,5) and data['train_y'].shape[1]==a.k
     if a.mode=='base':supervised(a,data,folder)
     elif a.mode=='scorer':scorer_fit(a,data,folder)

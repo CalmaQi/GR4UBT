@@ -1,4 +1,4 @@
-"""Full token/item CE + alignment, differentiable local recurrence, anchored RL."""
+"""Beauty Stage-I training with full-catalog item and SID supervision."""
 import argparse,copy,hashlib,json,math,os,time
 from pathlib import Path
 import numpy as np
@@ -181,15 +181,18 @@ def post(args,data,folder):
     save(arm/'result.json',{'status':'complete','selected_epoch':best_epoch,'selected_is_unmodified_stage1':best_epoch==0,'training_seed':2024,'RL_weight':args.rl_weight,'KL_weight':args.kl_weight,'supervised_weight':1.,'all_token_item_CE':True,'alignment':True,'reference_frozen':True,'metrics':metrics,'endpoint6_metrics':endpoint})
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--dataset',required=True);p.add_argument('--k',type=int,required=True);p.add_argument('--mode',choices=('base','rl','context'),required=True);p.add_argument('--batch',type=int,default=256);p.add_argument('--rl-batch',type=int,default=64);p.add_argument('--dim',type=int,default=448);p.add_argument('--rl-weight',type=float,default=.1);p.add_argument('--kl-weight',type=float,default=.1);p.add_argument('--variant',choices=('full','hard_tf','noalign'),default='full');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--dataset',required=True);p.add_argument('--k',type=int,required=True);p.add_argument('--mode',choices=('base',),required=True);p.add_argument('--batch',type=int,default=256);p.add_argument('--dim',type=int,default=448);p.add_argument('--variant',choices=('full','hard_tf','noalign'),default='full');a=p.parse_args()
     if not torch.cuda.is_available():raise RuntimeError('A CUDA-capable GPU is required')
     assert a.k in (3,5)
     torch.set_num_threads(4);torch.manual_seed(2024);np.random.seed(2024);torch.backends.cuda.matmul.allow_tf32=True
     folder=OUT/a.dataset;data=dict(np.load(DATA/a.dataset/'assets.npz',allow_pickle=False))
+    feature_name = 'sentence_t5_bge_sid.npz' if a.dataset == 'lastfm' else 'sentence_t5_u16.npz'
+    with np.load(DATA/a.dataset/feature_name,allow_pickle=False) as feature:
+        data.update(text=feature['text'],codes=feature['codes'])
     if a.variant!='full':
         assert a.mode=='base','these user-requested variants are Stage I ablations only'
         folder=folder/'ablations'/a.variant;folder.mkdir(parents=True,exist_ok=True)
     save(folder/(a.mode+'_config.json'),vars(a)|{'history':50,'train_stride':1,'seed':2024,'code_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()})
-    (base if a.mode=='base' else post)(a,data,folder)
+    base(a,data,folder)
 
 if __name__=='__main__':main()

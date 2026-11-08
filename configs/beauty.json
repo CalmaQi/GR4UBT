@@ -7,15 +7,21 @@
     "seed": 2024,
     "variant": "full"
   },
-  "rl": {
-    "arm": "grpo_hit",
-    "tag": "grpo_hit_s025",
+  "stage2": {
+    "implementation": "relation-aware",
+    "seed": 2024,
     "epochs": 3,
-    "batch": 32,
-    "updates": 2,
-    "learning_rate": 0.000001,
-    "rl_scale": 0.25,
-    "group": 16,
-    "seed": 2024
+    "batch_size": 32,
+    "updates_per_batch": 2,
+    "rollout_group": 8,
+    "policy_learning_rate": 1e-06,
+    "transition_learning_rate": 1e-05,
+    "run_factorial_arms": true,
+    "arms": [
+      "target_only_no_continuation",
+      "target_only_with_continuation",
+      "transition_no_continuation",
+      "transition_with_continuation"
+    ]
   }
 }

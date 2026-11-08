@@ -99,7 +99,7 @@ class SIDMuJoint(SIDMTP1):
         """Raw SID-token means, as in the archived soft rollout, without PAD.
 
         Summing digit-wise avoids materializing N x 16 x D token embeddings.
-        The table stays differentiable; OpenAI text enters history encoding.
+        The table stays differentiable; Sentence-T5 text enters history encoding.
         """
         tokens = self.item_id2tokens[1:]
         with torch.autocast(device_type=tokens.device.type, enabled=False):
