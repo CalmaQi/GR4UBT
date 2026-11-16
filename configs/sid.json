@@ -1,0 +1,49 @@
+{
+  "seed": 2024,
+  "threads": 4,
+  "codebooks": 16,
+  "bits_per_code": 8,
+  "datasets": {
+    "beauty": {
+      "feature_asset": "sentence_t5_u16.npz",
+      "recipe": "static_opq_pq",
+      "normalize_quantization_input": true,
+      "opq_iterations": 10,
+      "first_pq_iterations": 10,
+      "inner_pq_iterations": 4,
+      "final_pq_iterations": 25,
+      "collision_policy": "keep"
+    },
+    "cellphones": {
+      "feature_asset": "sentence_t5_u16.npz",
+      "recipe": "opq_ivf_pq",
+      "normalize_quantization_input": false,
+      "opq_iterations": 20,
+      "first_pq_iterations": 20,
+      "inner_pq_iterations": 20,
+      "final_pq_iterations": 25,
+      "collision_policy": "unique"
+    },
+    "ml1m": {
+      "feature_asset": "sentence_t5_u16.npz",
+      "recipe": "opq_ivf_pq",
+      "normalize_quantization_input": false,
+      "opq_iterations": 20,
+      "first_pq_iterations": 20,
+      "inner_pq_iterations": 20,
+      "final_pq_iterations": 25,
+      "collision_policy": "unique"
+    },
+    "lastfm": {
+      "feature_asset": "sentence_t5_bge_sid.npz",
+      "recipe": "opq_ivf_pq",
+      "normalize_quantization_input": false,
+      "opq_iterations": 20,
+      "first_pq_iterations": 20,
+      "inner_pq_iterations": 20,
+      "final_pq_iterations": 25,
+      "min_points_per_centroid": 1,
+      "collision_policy": "unique"
+    }
+  }
+}
